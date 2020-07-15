@@ -7,30 +7,38 @@ import {BrowserRouter as Router,Route,Link,Redirect, Switch} from 'react-router-
 
 function App() {
   return (
+    <>
+ 
+ 
       <Router>
-        <div>
-        <div className="text-center">
+      <nav className="navbar navbar-expand-sm bg-info text-white navbar-dark ">
+  <a className="navbar-brand" href="#">TravelClaimsAZ</a>
+  <ul className="navbar-nav">
+    <li className="nav-item">
+    <Link to="/Login">
+
+      <a className="nav-link" href="#">Login</a>
+      </Link>
+    </li>
+    <li className="nav-item">
+    <Link to="/Register">
+      <a className="nav-link" href="#">Register</a>
+      </Link>
+    </li>
+  </ul>
+  </nav>
+  <div className="container-fluid" style={{marginTop:"40px"}}></div>
        
-            <Link to="/Login">
-              <br></br>
-              <button className="mr-3">Login</button>
-    
-                </Link>
-              
-          
-            <Link to="/Register">
-           
-              <button>Register</button></Link>
-            </div>
         <Switch>
         <Route path="/Login" component={Login}/>
           <Route path="/Register" component={Register}/>
           <Route path="/" component={Login}/>       
         </Switch>
-      </div>
+    
       </Router>
-  
+      </>
   );
+ 
 }
 
 export default App;

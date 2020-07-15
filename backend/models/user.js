@@ -10,16 +10,19 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
   credentials: {
     username: {
+
       type: String,
+    
       required: [true, 'username text field is required'],
 
     },
     password: {
       type: String,
-      required: [true, 'username text field is required']
+      
+      required: [true, 'password text field is required']
     }
 
-  },
+  }, 
 
   details: {
     firstName: {

@@ -166,7 +166,8 @@ class Register extends React.Component{
         return(
         <React.Fragment>
             <div className="container">
-              <form style={{position:'relative',left:'50px'}}  onSubmit={this.handleSubmit}  >
+              <form className="registerForm" onSubmit={this.handleSubmit}>
+              <p>Register</p>
                 <br></br>
                 <div className="form-group" style={{display:"flex"}} >
                     <label className="control-label col-sm-2 "> *FirstName:</label>

@@ -1,5 +1,6 @@
 import React from "react";
 import "./login.css";
+import 'font-awesome/css/font-awesome.min.css';
 
 import {BrowserRouter as Router,Route,Link,Redirect, Switch} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -62,25 +63,47 @@ class Login extends React.Component{
 
                     <>
                         <br/>
+                        
+                              
+                        <div className="container"> 
+                        <div className="row">
+                        <div className="col-md-3"></div>
+                        
+                          <div className="col-sm-6">
+                          
+                         
+                          
                        
-                    <div className="container">      
-                        <form style={{position:'relative',left:'50px'}} onSubmit={this.handleSubmit}>
+                       
+                        <form className="loginForm" onSubmit={this.handleSubmit}>
+                          <br>
+                          </br>
+                        <p className="normal">Welcome</p>
+                        <p>Login</p>
+                        
+                        <br></br>
+                      
         
                             <div className="form-group " style={{display:"flex"}}>
-                                <label   className="control-label col-sm-2" >Username:  </label>
-                                <div className="col-sm-11">
-                                  <input type="text"  style={{height:'90%',width:'40%' }} 
-                                  className="form-control input-sm"
+                              
+                            <label htmlfor = "username"><span className="fa fa-user" style={{fontSize:"28px"}}></span> </label>
+                               
+                                <div className="col-sm-12">
+                              
+                              
+                                  <input type="text" 
+                                  className="form-control" placeholder="Username"
                                   name="username" onChange={this.handleChange} required
                                   />
                                 </div>
                             </div>
                             
                             <div className="form-group"  style={{display:"flex"}}>
-                                <label  className="control-label col-sm-2 ">Password:  </label>
-                                <div className="col-sm-11">
-                                  <input type="password" style={{height:'90%', width:'40%'}} 
-                                  className="form-control input-sm"
+                            <label htmlfor = "password"><span className="fa fa-lock"  style={{fontSize:"28px"}}></span> </label>
+                          
+                                <div className="col-sm-12">
+                                  <input type="password" 
+                                  className="form-control" placeholder="Password"
                                   name="password" onChange={this.handleChange} required
                                   />
                                 </div>
@@ -88,14 +111,19 @@ class Login extends React.Component{
                           
                       
                             <div className="form-group">
-                                <div className="col-sm-offset-2 col-sm-10">
+                           
+                                <div className="col-sm-offset-2 col-sm-11">
                                   {this.state.message !== '' && <div className={`text text-${this.state.textStyle}`}>{this.state.message}</div>}<br/>
-                                  <button type="submit" className="btn btn-primary mr-2" onClick={this.handleSubmit}>Submit</button>
-                                    <button className="btn btn-primary">Register</button>
+                                  <button type="submit" className="text-white" onClick={this.handleSubmit}>Login</button>
+                                   
                                 </div>
                             </div>
+                          
                         </form>
-                    </div>  
+                        </div>
+                        </div>
+                        </div>
+                        
                   </>
                     
                 )
