@@ -1,6 +1,7 @@
 import React from "react";
 import "./login.css";
 import 'font-awesome/css/font-awesome.min.css';
+import swal from 'sweetalert/dist/sweetalert.min.js';
 
 import {BrowserRouter as Router,Route,Link,Redirect, Switch} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -46,9 +47,16 @@ class Login extends React.Component{
                     }
                   }).then(response => {
                     if (response.status >= 200 && response.status < 300) {
-                        alert("login succesfully")
+                      swal(this.state.username,"logged in successfully","success")
+                       /* swal({
+                          title:"successfully login",
+                          text:"",
+                          icon:"success",
+                          button:"ok"
+                        })*/
+                         
                         console.log(response);
-                        window.location.reload();
+                        //window.location.reload();
                       } else {
                         this.setState({message:"incorrect username or password",
                         textStyle:"danger" })

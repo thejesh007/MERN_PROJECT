@@ -13,23 +13,18 @@ function App() {
       <Router>
       <nav className="navbar navbar-expand-sm bg-info text-white navbar-dark ">
   <a className="navbar-brand" href="#">TravelClaimsAZ</a>
-  <ul className="navbar-nav">
-    <li className="nav-item">
-    <Link to="/Login">
-
-      <a className="nav-link" href="#">Login</a>
-      </Link>
-    </li>
-    <li className="nav-item">
-    <Link to="/Register">
-      <a className="nav-link" href="#">Register</a>
-      </Link>
-    </li>
-  </ul>
   </nav>
   <div className="container-fluid" style={{marginTop:"40px"}}></div>
-       
-        <Switch>
+  <div className="text-center">
+  <Link to="/Login">
+    <button className="mr-2 btn btn-info">Login</button>
+    </Link>
+    <Link to="/Register">
+    <button className="btn btn-info">Register</button>
+    </Link>
+
+  </div>
+          <Switch>
         <Route path="/Login" component={Login}/>
           <Route path="/Register" component={Register}/>
           <Route path="/" component={Login}/>       

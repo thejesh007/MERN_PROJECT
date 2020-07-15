@@ -2,6 +2,7 @@ import React from "react";
 import {useHistory} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route } from 'react-router-dom';
+import swal from 'sweetalert';
 
 
 import axios from "axios";
@@ -167,7 +168,7 @@ class Register extends React.Component{
         <React.Fragment>
             <div className="container">
               <form className="registerForm" onSubmit={this.handleSubmit}>
-              <p>Register</p>
+         
                 <br></br>
                 <div className="form-group" style={{display:"flex"}} >
                     <label className="control-label col-sm-2 "> *FirstName:</label>
@@ -268,8 +269,9 @@ class Register extends React.Component{
 
                 
 
-                <div className="form-group">
-                     <div className="col-sm-offset-2 col-sm-10">
+                <div className="form-group" style={{display:"flex"}}>
+                <label className="control-label col-sm-2"></label>
+                     <div className="col-sm-offset-2 col-sm-11">
                      <div className="text-danger">{this.state.errors.message}</div><br></br>
                      <Route render={({ history}) => ( 
                         <button type="submit" className="btn btn-primary mr-2" onClick={(e) => this.handleSubmit(e,history)}>Submit</button>
