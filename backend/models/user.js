@@ -8,7 +8,7 @@ const Schema = mongoose.Schema;
 
 //create schema for user
 const UserSchema = new Schema({
-  credentials: {
+  
     username: {
 
       type: String,
@@ -20,11 +20,11 @@ const UserSchema = new Schema({
       type: String,
       
       required: [true, 'password text field is required']
-    }
+    },
 
-  }, 
+   
 
-  details: {
+  
     firstName: {
       type: String,
       required: [true, 'firstName text field is required'],
@@ -55,7 +55,7 @@ const UserSchema = new Schema({
     }
   }
 
-});
+);
 
 //create model for users
 

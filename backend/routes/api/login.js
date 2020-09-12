@@ -22,16 +22,20 @@ router.post('/login', (req, res, next) => {
 
    var body = req.body;
    
-        User.find({credentials:{username:body.username,password:body.password}}, function (err, result) {
+        User.findOne({username:body.username}, function (err, u) {
+console.log(body.username)
+          console.log(body.password)
+          bcrypt.compare(body.password,u.password,function(err,result){
+            console.log(u.password)
              if (err) {
+               console.log("failed")
                 res.status(401).send(err);
-                } else {
-                    if (result && result.length > 0) {
+                } else  {
                          res.status(200).send({ "status": true });
-                    } else  {
-                         res.status(401).send({ "status": false });
-                            }
-                        }               
+                         console.log("password matched")
+                    } 
+                        }    
+                          )       
   
             });
     });
@@ -40,13 +44,15 @@ router.post('/register', (req, res, next) => {
   res.setHeader('Content-Type','application/json'); 
   var body = req.body;
   bcrypt.genSalt(10, function(err, salt) {
+    console.log(salt)
     bcrypt.hash(body.password, salt, function(err, hash) {
+      console.log(hash)
       var user = new User({
-        credentials: {
+      
             username: body.userId,
-            password: hash
-        },
-        details: {
+            password: hash,
+        
+        
             firstName:body.firstName,
             middleName:body.middleName,
             lastName:body.lastName,
@@ -54,14 +60,14 @@ router.post('/register', (req, res, next) => {
             address:body.address,
             mobileNo:body.mobileNo,
         
-        }
+        
     });
     bcrypt.compare(body.password, hash, function(err, result) {
       console.log("true")
   });
     
     user.save(function (err, user) {
-        if (err) {
+        if (err) { 
             console.error(err);        
             res.status(500).send({status:false, error:err});
         } 
