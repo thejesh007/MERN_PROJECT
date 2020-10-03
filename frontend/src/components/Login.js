@@ -51,6 +51,7 @@ class Login extends React.Component {
       if (response.status >= 200 && response.status < 300) {
        
         swal(this.state.username, "logged in successfully", "success")
+        
          if(history){
           history.push('./update')
         }

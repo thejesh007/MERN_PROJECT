@@ -39,8 +39,7 @@ class Update extends React.Component {
     input["email"] = "";
     input["mobileNo"] = "";
     input["address"] = "";
-    input["userId"] = "";
-    input["password"] = "";
+  
     input["message"] = "";
 
     this.setState(this.baseState)
@@ -69,11 +68,11 @@ class Update extends React.Component {
        this.setState({input:input});*/
 
       console.log(this.state.input)  
-      alert('successfully registered');
+      alert('successfully update');
 
       // post data in database
       axios
-        .post("http://localhost:4444/api/user/register", this.state.input)
+        .put("http://localhost:4444/api/user/update", this.state.input)
         .then(res => {
           console.log(res);
         })
@@ -95,31 +94,14 @@ class Update extends React.Component {
 
     //required fields
     if ((!input["firstName"]) || (!input["lastName"]) || (!input["email"]) || (!input["mobileNo"]) ||
-      (!input["address"]) || (!input["userId"]) || (!input["password"])) {
+      (!input["address"]) ) {
       isValid = false;
       errors["message"] = "All * mentioned fields are mandatory.";
     }
 
     else {
       //username validation
-      if (typeof input["userId"] !== "undefined") {
-
-        var pattern = new RegExp(/[*^#!~|\"%:<>[\]{}`\\()';@&$]/);
-        if (pattern.test(input["userId"])) {
-          isValid = false;
-          errors["userId"] = "Username should not contain special characters.";
-        }
-      }
-
-      //password validation
-      if (typeof input["password"] !== "undefined") {
-
-        var pattern = new RegExp(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/);
-        if (!pattern.test(input["password"])) {
-          isValid = false;
-          errors["password"] = "Password must be at least 8 characters long, should contain at-least 1 Uppercase,1 Lowercase,1 Numeric and 1 special character."
-        }
-      }
+      
 
       //mobile no. validation
       if (typeof input["mobileNo"] !== "undefined") {
@@ -242,34 +224,7 @@ class Update extends React.Component {
               </div>
             </div>
 
-
-            <div className="form-group " style={{ display: "flex" }}>
-              <label className="control-label col-sm-2 ">*UserID:</label>
-              <div className="col-sm-11">
-                <input type="text" style={{ height: '90%', width: '40%' }}
-                  className="form-control input-sm"
-                  name="userId"
-                  onChange={this.handleChange} value={this.state.input.userId} required
-                />
-                <div className="text-danger">{this.state.errors.userId}</div>
-              </div>
-            </div>
-
-            <div className="form-group " style={{ display: "flex" }}>
-              <label className="control-label col-sm-2">*Password:</label>
-              <div className="col-sm-11">
-                <input type="password" style={{ height: '90%', width: '40%' }}
-                  className="form-control input-sm"
-                  name="password"
-                  onChange={this.handleChange} value={this.state.input.password} required
-                />
-                <div className="text-danger">{this.state.errors.password}</div>
-              </div>
-            </div>
-
-
-
-            <div className="form-group" style={{ display: "flex" }}>
+          <div className="form-group" style={{ display: "flex" }}>
               <label className="control-label col-sm-2"></label>
               <div className="col-sm-offset-2 col-sm-11">
                 <div className="text-danger">{this.state.errors.message}</div><br></br>
@@ -277,7 +232,7 @@ class Update extends React.Component {
                   <button type="submit" className="btn btn-primary mr-2" onClick={(e) => this.handleSubmit(e, history)}>Update</button>
                 )} />
 
-                <button type="reset" className="btn btn-primary" onClick={this.handleReset}>Edit</button>
+                <button type="reset" className="btn btn-primary" onClick={this.handleReset}>Reset</button>
               </div>
             </div>
           </form>
